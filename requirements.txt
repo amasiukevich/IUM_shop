@@ -3,5 +3,4 @@ pandas
 numpy
 fastapi
 uvicorn
-tensorflow
-
+xgboost

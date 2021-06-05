@@ -15,12 +15,12 @@ def rewrite(filename, write_filename):
 
         write_file.write(final_string)
 
-if not os.path.isdir(os.getcwd() + "/proper_data"):
-    os.mkdir("proper_data")
+def transform_all_data(base_folder_raw, base_folder_new):
 
-
-
-rewrite("data/users2.jsonl", "proper_data/users2.json")
-rewrite("data/sessions2.jsonl", "proper_data/sessions2.json")
-rewrite("data/deliveries2.jsonl", "proper_data/deliveries2.json")
-rewrite("data/products2.jsonl", "proper_data/products2.json")
+    for filename in os.listdir(os.getcwd() + f"{base_folder_raw}"):
+        if filename.endswith('.jsonl'):
+            new_filename = filename.rstrip(".jsonl") + ".json"
+            rewrite(
+                os.getcwd() + f"{base_folder_raw}{os.sep}{filename}",
+                os.getcwd() + f"{base_folder_new}{os.sep}{new_filename}"
+            )
